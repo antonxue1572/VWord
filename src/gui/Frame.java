@@ -172,7 +172,7 @@ public class Frame {
             Graphics2D g = (Graphics2D)graphics;
             g.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
             g.drawString (VWord.f.getEditorText(), 1, 1);
-            return PAGE_EXISTS; //Page exists (offsets start at zero!)
+            return PAGE_EXISTS;
 
         }
         
