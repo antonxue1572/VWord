@@ -155,6 +155,7 @@ public class Frame {
         @Override
         public void actionPerformed(ActionEvent e) {
             PrinterJob job = PrinterJob.getPrinterJob();
+            job.setPrintable(this);
             if(job.printDialog() == true) {
                 try {
                     job.print();
@@ -166,12 +167,14 @@ public class Frame {
 
         @Override
         public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+
             if (pageIndex > 0) {
                 return NO_SUCH_PAGE;
             }
+            
             Graphics2D g = (Graphics2D)graphics;
             g.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-            g.drawString (VWord.f.getEditorText(), 1, 1);
+            g.drawString (VWord.f.getEditorText(), 24, 24);
             return PAGE_EXISTS;
 
         }
