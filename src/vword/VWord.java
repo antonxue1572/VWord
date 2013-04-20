@@ -5,11 +5,11 @@ import gui.Save;
 
 public class VWord {
 
-    public static Frame f;
+    public static Frame vFrame;
     
     public static void main(String[] args) {
-        f = new Frame();
-        f.initComponents();
-        f.finalizeGUI();
+        vFrame = new Frame();
+        vFrame.initComponents();
+        vFrame.finalizeGUI();
     }
 }

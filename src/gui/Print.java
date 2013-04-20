@@ -23,7 +23,7 @@ public class Print extends Frame {
     JButton print;
     
     // Component properties
-    private final int PRINT_X = 400;
+    private final int PRINT_X = 394;
     private final int PRINT_Y = 10;
     
     // Constructor

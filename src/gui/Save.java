@@ -25,7 +25,7 @@ public final class Save extends Frame {
     private JButton save;
     
     // Properties
-    private final int SAVE_X = 330;
+    private final int SAVE_X = 320;
     private final int SAVE_Y = 10;
     
     // Constructor
