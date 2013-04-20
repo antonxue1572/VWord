@@ -9,10 +9,12 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.print.PrintException;
 import javax.swing.JButton;
+import util.PrintParser;
 
 public class Print extends Frame {
     
@@ -47,6 +49,8 @@ public class Print extends Frame {
     // Helper class
     private class PrintActionListener implements ActionListener, Printable {
 
+        private ArrayList <String> printOutput;
+        
         @Override
         public void actionPerformed(ActionEvent e) {
             PrinterJob job = PrinterJob.getPrinterJob();
@@ -62,15 +66,21 @@ public class Print extends Frame {
 
         @Override
         public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+            
             if(pageIndex > 0) {
                 return NO_SUCH_PAGE;
             }
             Graphics2D g = (Graphics2D)graphics;
             g.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-            g.drawString(Field.getInstance().getEditorText(), 24, 24);
+            
+            // Get text and output it
+            printOutput = PrintParser.getInstance().parse(Field.getInstance().getEditorText());
+            for(int i = 0; i < printOutput.size(); ++i) {
+                g.drawString(printOutput.get(i), 24, 24 * i);
+                //System.out.println(printOutput.get(i));
+            }
             return PAGE_EXISTS;
         }
-        
         
     }
     

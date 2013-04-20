@@ -1,10 +1,24 @@
 package util;
 
+import java.util.ArrayList;
+
 public class SaveParser extends Parser {
 
-    @Override
-    public String parse() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    // Singleton
+    private static final SaveParser instance = new SaveParser();
+    
+    // Constrctor
+    private SaveParser() {
+        
     }
     
+    // Static factory
+    public static Parser getInstance() {
+        return instance;
+    }
+    
+    @Override
+    public ArrayList<String> parse(String src) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }    
 }

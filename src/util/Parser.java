@@ -1,7 +1,11 @@
 package util;
 
+import java.util.ArrayList;
+
 public abstract class Parser {
     
-    public abstract String parse();
+    protected ArrayList <String> output = new ArrayList <String> ();
+    
+    public abstract ArrayList <String> parse(String src);
     
 }
