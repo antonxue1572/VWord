@@ -73,11 +73,15 @@ public class Print extends Frame {
             Graphics2D g = (Graphics2D)graphics;
             g.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
             
+            Field.getInstance().getComponent().printAll(graphics);
+            
             // Get text and output it
+            /*
             printOutput = PrintParser.getInstance().parse(Field.getInstance().getEditorText());
             for(int i = 0; i < printOutput.size(); ++i) {
                 g.drawString(printOutput.get(i), 48, 72 + 24 * i);
             }
+            */
             return PAGE_EXISTS;
         }
         
