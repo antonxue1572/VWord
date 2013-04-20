@@ -76,8 +76,7 @@ public class Print extends Frame {
             // Get text and output it
             printOutput = PrintParser.getInstance().parse(Field.getInstance().getEditorText());
             for(int i = 0; i < printOutput.size(); ++i) {
-                g.drawString(printOutput.get(i), 100, 100 + 
-                        24 * i);
+                g.drawString(printOutput.get(i), 72, 72 + 24 * i);
             }
             return PAGE_EXISTS;
         }

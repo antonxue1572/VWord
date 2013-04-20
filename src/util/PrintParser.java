@@ -21,11 +21,11 @@ public class PrintParser extends Parser {
     public ArrayList<String> parse(String src) {
         
         StringBuffer sb = new StringBuffer(src);
-        int iterAmount = sb.length() / 50;
+        int iterAmount = sb.length() / 96;
         
         for(int i = 0; i < iterAmount; ++i) {
-            output.add(sb.substring(0, 50));
-            sb.delete(0, 50);
+            output.add(sb.substring(0, 96));
+            sb.delete(0, 96);
         }
         output.add(sb.substring(0));
         
