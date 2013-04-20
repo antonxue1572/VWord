@@ -35,15 +35,9 @@ public class Frame {
         insets = pane.getInsets();
     }
     
-    public Frame(int a) {
-        
-    }
-    
-    // Init components
-    public void initComponents() {
-        pane.add(Print.getInstance().getComponent());
-        pane.add(Field.getInstance().getComponent());
-        pane.add(Save.getInstance().getComponent());
+    // Add components
+    public void add(Component comp) {
+        pane.add(comp);
     }
     
     // Finalize

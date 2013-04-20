@@ -1,6 +1,7 @@
 package vword;
 import gui.Field;
 import gui.Frame;
+import gui.Print;
 import gui.Save;
 
 public class VWord {
@@ -9,7 +10,9 @@ public class VWord {
     
     public static void main(String[] args) {
         vFrame = new Frame();
-        vFrame.initComponents();
+        vFrame.add(Field.getInstance().getComponent());
+        vFrame.add(Save.getInstance().getComponent());
+        vFrame.add(Print.getInstance().getComponent());
         vFrame.finalizeGUI();
     }
 }
