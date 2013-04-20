@@ -6,7 +6,7 @@ package vword;
 
 /**
  *
- * @author Celery
+ * @author Anton
  */
 public class VWord {
 
@@ -14,6 +14,6 @@ public class VWord {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        // TODO code application logic here
     }
 }
