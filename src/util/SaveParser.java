@@ -19,6 +19,25 @@ public class SaveParser extends Parser {
     
     @Override
     public ArrayList<String> parse(String src) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    
+        StringBuffer sb = new StringBuffer(src);
+        
+        if(sb.indexOf("/n") != -1) {
+            while(sb.indexOf("/n") != -1) {
+                output.add(sb.substring(0, sb.indexOf("/n") - 2));
+                sb.delete(0, sb.indexOf("/n") + 2);
+            }
+        } else {
+            output.add(sb.toString());
+        }
+        
+        // Make "dummy" and clear original one
+        ArrayList <String> temp = new ArrayList <String> ();
+        for(int i = 0; i < output.size(); ++i) {
+            temp.add(output.get(i));
+        }
+        output.clear();
+        
+        return temp;
     }    
 }

@@ -10,11 +10,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import util.SaveParser;
 
 public final class Save extends Frame {
     
@@ -63,7 +65,7 @@ public final class Save extends Frame {
         private JButton confirm;
         
         // Component properties
-        private final int NAME_COLUMNS = 20;
+        private final int NAME_COLUMNS = 25;
         private final int NAME_X = 10;
         private final int NAME_Y = 10;
         private final String BUTTON_TEXT = "Confirm";
@@ -98,15 +100,29 @@ public final class Save extends Frame {
         // Helper class
         private class ConfirmActionListener implements ActionListener {
 
+            private ArrayList <String> outputData;
+            
             @Override
             public void actionPerformed(ActionEvent e) {
                 PrintWriter pw;
+                outputData = SaveParser.getInstance().parse(Field.getInstance().getEditorText());
+                
+                // Test
+                System.out.println("Debug msg 1");
+                for(int i = 0; i < outputData.size(); ++i) {
+                    System.out.println(outputData.get(i));
+                }
+                // End test
+                
                 try {
                     pw = new PrintWriter(new FileWriter(new File(name.getText() + ".txt")));
-                    // TODO: Make parser and get text
-                    pw.println(Field.getInstance().getEditorText());
+                    System.out.println("Ouput data: " + outputData.size());
+                    for(int i = 0; i < outputData.size(); ++i) {
+                        pw.println(outputData.get(i));
+                    }
                     pw.flush();
                     pw.close();
+                    outputData.clear();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

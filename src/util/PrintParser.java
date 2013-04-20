@@ -27,6 +27,8 @@ public class PrintParser extends Parser {
             output.add(sb.substring(0, 96));
             sb.delete(0, 96);
         }
+        
+        // Get last bit
         output.add(sb.substring(0));
         
         // Make "dummy" and clear original one
