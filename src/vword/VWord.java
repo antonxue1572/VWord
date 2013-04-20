@@ -3,11 +3,10 @@ import gui.Frame;
 
 public class VWord {
 
+    public static Frame f;
+    
     public static void main(String[] args) {
-        Frame f = new Frame();
+        f = new Frame();
         f.initGUI();
-        while(true) {
-            
-        }
     }
 }

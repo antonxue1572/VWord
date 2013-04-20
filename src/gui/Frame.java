@@ -1,9 +1,15 @@
 package gui;
 
 import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,6 +17,7 @@ import java.io.PrintWriter;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.print.PrintException;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -20,6 +27,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import vword.VWord;
 
 public class Frame {
 
@@ -96,7 +104,7 @@ public class Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 final JFrame save = new JFrame("Save");
-                save.setSize(200, 100);
+                save.setSize(275, 150);
                 Container sPane = save.getContentPane();
                 sPane.setLayout(null);
                 Insets sInsets = sPane.getInsets();
@@ -106,7 +114,7 @@ public class Frame {
                 sPane.add(name);
                 
                 JButton confirm = new JButton("Confirm");
-                confirm.setBounds(sInsets.left + 100, sInsets.top + 35, confirm.getPreferredSize().width, confirm.getPreferredSize().height);
+                confirm.setBounds(sInsets.left + 100, sInsets.top + 75, confirm.getPreferredSize().width, confirm.getPreferredSize().height);
                 confirm.addActionListener(new ActionListener() {
 
                     @Override
@@ -134,11 +142,40 @@ public class Frame {
         // Print
         print = new JButton("Print");
         print.setBounds(insets.left + 400, insets.top + 10, print.getPreferredSize().width, print.getPreferredSize().height);
+        print.addActionListener(new PrintAction());
         pane.add(print);
     }
     
     public String getEditorText() {
         return field.getText();
+    }
+    
+    private class PrintAction implements ActionListener, Printable {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            PrinterJob job = PrinterJob.getPrinterJob();
+            if(job.printDialog() == true) {
+                try {
+                    job.print();
+                } catch (PrinterException ex) {
+                    ex.printStackTrace();
+                }
+            }            
+        }
+
+        @Override
+        public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+            if (pageIndex > 0) {
+                return NO_SUCH_PAGE;
+            }
+            Graphics2D g = (Graphics2D)graphics;
+            g.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+            g.drawString (VWord.f.getEditorText(), 1, 1);
+            return PAGE_EXISTS; //Page exists (offsets start at zero!)
+
+        }
+        
     }
     
 }
