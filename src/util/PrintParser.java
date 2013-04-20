@@ -19,18 +19,21 @@ public class PrintParser extends Parser {
     
     @Override
     public ArrayList<String> parse(String src) {
-        int j = 0;
-        for(int i = 0; i < src.length() % 100; ++i, ++j) {
-            String temp = src.substring(0, 100);
-            output.add(temp);
+        
+        StringBuffer sb = new StringBuffer(src);
+        int iterAmount = sb.length() / 50;
+        
+        for(int i = 0; i < iterAmount; ++i) {
+            output.add(sb.substring(0, 50));
+            sb.delete(0, 50);
         }
+        output.add(sb.substring(0));
         
         // Make "dummy" and clear original one
         ArrayList <String> temp = new ArrayList <String> ();
         for(int i = 0; i < output.size(); ++i) {
             temp.add(output.get(i));
         }
-        
         output.clear();
         
         return temp;
