@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -33,14 +34,14 @@ public class Frame {
 
     
     // Framework
-    private JFrame frame;
-    private Container pane;
-    private Insets insets;
+    protected JFrame frame;
+    protected Container pane;
+    protected Insets insets;
+    
+    // Important numbers
+    protected final int WIDTH_ACCOM = 9;
     
     // Components
-    private JTextArea field;
-    private JScrollPane fieldWrapper;
-    private JButton save;
     private JButton print;
     
     // Misc
@@ -48,11 +49,6 @@ public class Frame {
     
     // Constructor
     public Frame() {
-        
-}
-    
-    // Begins stuff
-    public void initGUI() {
         try {
             // Fancy
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -77,108 +73,25 @@ public class Frame {
         
         // Insets
         insets = pane.getInsets();
-        
-        // Components
-        initComponents();
-        
-        // Finalize
+    }
+    
+    
+    // Finalize
+    public void finalizeGUI() {
         frame.setVisible(true);
     }
     
-    private void initComponents() {
-        // Main text area
-        field = new JTextArea();
-        fieldWrapper = new JScrollPane(field);
-        field.setEditable(true);
-        field.setLineWrap(true);
-        fieldWrapper.setWheelScrollingEnabled(true);
-        fieldWrapper.setBounds(insets.left + 10, insets.top + 50, 445, 500);
-        pane.add(fieldWrapper);
-        
-        // Toolbar
-        // Save
-        save = new JButton("Save");
-        save.setBounds(insets.left + 330, insets.top + 10, save.getPreferredSize().width, save.getPreferredSize().height);
-        save.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                final JFrame save = new JFrame("Save");
-                save.setSize(275, 150);
-                Container sPane = save.getContentPane();
-                sPane.setLayout(null);
-                Insets sInsets = sPane.getInsets();
-                
-                final JTextField name = new JTextField(20);
-                name.setBounds(sInsets.left + 10, sInsets.top + 10, name.getPreferredSize().width, name.getPreferredSize().height);
-                sPane.add(name);
-                
-                JButton confirm = new JButton("Confirm");
-                confirm.setBounds(sInsets.left + 100, sInsets.top + 75, confirm.getPreferredSize().width, confirm.getPreferredSize().height);
-                confirm.addActionListener(new ActionListener() {
-
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        try {
-                            PrintWriter pw = new PrintWriter(new FileWriter(new File(name.getText() + ".txt")));
-                            pw.println(getEditorText());
-                            pw.flush();
-                            pw.close();
-                            save.dispose();
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
-                        }
-                        
-                    }
-                });
-                sPane.add(confirm);
-                
-                save.setVisible(true);
-            }
-        });
-        pane.add(save);
+    public void initComponents() {
         
         
-        // Print
-        print = new JButton("Print");
-        print.setBounds(insets.left + 400, insets.top + 10, print.getPreferredSize().width, print.getPreferredSize().height);
-        print.addActionListener(new PrintAction());
-        pane.add(print);
+        pane.add(Print.getInstance().getComponent());
+        pane.add(Field.getInstance().getComponent());
+        pane.add(Save.getInstance().getComponent());
     }
     
-    public String getEditorText() {
-        return field.getText();
-    }
     
-    private class PrintAction implements ActionListener, Printable {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            PrinterJob job = PrinterJob.getPrinterJob();
-            job.setPrintable(this);
-            if(job.printDialog() == true) {
-                try {
-                    job.print();
-                } catch (PrinterException ex) {
-                    ex.printStackTrace();
-                }
-            }            
-        }
-
-        @Override
-        public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
-
-            if (pageIndex > 0) {
-                return NO_SUCH_PAGE;
-            }
-            
-            Graphics2D g = (Graphics2D)graphics;
-            g.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-            g.drawString (VWord.f.getEditorText(), 24, 24);
-            return PAGE_EXISTS;
-
-        }
-        
+    public Component getComponent() {
+        return null;
     }
     
 }
