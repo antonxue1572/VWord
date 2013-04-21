@@ -29,4 +29,10 @@ public class FieldWrapper extends JScrollPane {
     public String getEditorText() {
         return Field.getInstance().getText();
     }    
+    
+    // Set the text
+    public void setEditorText(String newText) {
+        Field.getInstance().setText(newText);
+        this.repaint();
+    }
 }

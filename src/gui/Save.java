@@ -43,8 +43,8 @@ public class Save extends JButton {
         private Container savePane;
         private Insets saveInsets;
         
-        // Framework properties
-        private final int SAVE_FRAME_WIDTH = 275;
+        // Properties
+        private final int SAVE_FRAME_WIDTH = 320;
         private final int SAVE_FRAME_HEIGHT = 150;
         
         // Components
@@ -56,8 +56,8 @@ public class Save extends JButton {
         private final int NAME_X = 10;
         private final int NAME_Y = 10;
         private final String BUTTON_TEXT = "Confirm";
-        private final int BUTTON_X = 100;
-        private final int BUTTON_Y = 75;
+        private final int CONFIRM_X = 100;
+        private final int CONFIRM_Y = 75;
         
         public SaveActionListener() {
             // Frame
@@ -79,7 +79,7 @@ public class Save extends JButton {
             
             // Confirmation button
             confirm = new JButton(BUTTON_TEXT);
-            confirm.setBounds(saveInsets.left + BUTTON_X, saveInsets.top + BUTTON_Y, confirm.getPreferredSize().width, confirm.getPreferredSize().height);
+            confirm.setBounds(saveInsets.left + CONFIRM_X, saveInsets.top + CONFIRM_Y, confirm.getPreferredSize().width, confirm.getPreferredSize().height);
             confirm.addActionListener(new ConfirmActionListener());
             savePane.add(confirm);
         }

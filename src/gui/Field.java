@@ -8,12 +8,13 @@ public class Field extends JTextArea {
     private static final Field instance = new Field();
     
     // Properties
-    
+    private final boolean EDITABLE = true;
+    private final boolean LINE_WRAP = true;
     
     // Constructor
     private Field() {
-        this.setEditable(true);
-        this.setLineWrap(true);
+        this.setEditable(EDITABLE);
+        this.setLineWrap(LINE_WRAP);
     }
     
     // Static factory
