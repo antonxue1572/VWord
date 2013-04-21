@@ -9,13 +9,25 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class Frame {
 
+    // Singleton
+    private static final Frame instance = new Frame();
+    
     // Framework
-    protected JFrame frame;
-    protected Container pane;
-    protected Insets insets;
+    private JFrame frame;
+    private Container pane;
+    private Insets insets;
+    
+    // Properties
+    private final int WIDTH = 480;
+    private final int HEIGHT = 600;
     
     // Constructor
-    public Frame() {
+    private Frame() {
+        /*
+         * Adapt to appear native to the machine. Nothing is done with the
+         * exceptions due to the lack of necessity. Avoidance of multi-catch
+         * in case recipients lack Java 7 / above
+         */
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException ex) {
@@ -26,7 +38,7 @@ public class Frame {
         
         // Frame
         frame = new JFrame("V-Word Processor");
-        frame.setSize(480, 600);
+        frame.setSize(WIDTH, HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // Container
@@ -35,6 +47,11 @@ public class Frame {
         
         // Insets
         insets = pane.getInsets();
+    }
+    
+    // Static factory
+    public static Frame getInstance() {
+        return instance;
     }
     
     // Add components
@@ -47,9 +64,9 @@ public class Frame {
         frame.setVisible(true);
     }
     
-    // To be overriden
-    public Component getComponent() {
-        throw new UnsupportedOperationException("Unsuportted; must override");
+    // Get the insets
+    public Insets getInsets() {
+        return insets;
     }
     
 }

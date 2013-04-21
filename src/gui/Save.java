@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.Button;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -11,42 +9,31 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import util.SaveParser;
 
-public final class Save extends Frame {
+public class Save extends JButton {
     
     // Singleton
     private static final Save instance = new Save();
-    
-    // Component
-    private JButton save;
-    
+        
     // Properties
     private final int SAVE_X = 320;
     private final int SAVE_Y = 10;
     
     // Constructor
     private Save() {
-        save = new JButton("Save");
-        save.setBounds(insets.left + SAVE_X, insets.top + SAVE_Y, save.getPreferredSize().width, save.getPreferredSize().height);
-        save.addActionListener(new SaveActionListener());
+        super("Save");
+        this.setBounds(Frame.getInstance().getInsets().left + SAVE_X, Frame.getInstance().getInsets().top + SAVE_Y, this.getPreferredSize().width, this.getPreferredSize().height);
+        this.addActionListener(new SaveActionListener());
     }
     
     // Static factory
     public static Save getInstance() {
         return instance;
-    }
-    
-    @Override
-    public Component getComponent() {
-        return save;
-    }
-    
+    }    
     
     // Helper class
     private class SaveActionListener implements ActionListener {
@@ -64,7 +51,7 @@ public final class Save extends Frame {
         private JTextField name;
         private JButton confirm;
         
-        // Component properties
+        // Properties
         private final int NAME_COLUMNS = 25;
         private final int NAME_X = 10;
         private final int NAME_Y = 10;
@@ -105,7 +92,7 @@ public final class Save extends Frame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PrintWriter pw;
-                outputData = SaveParser.getInstance().parse(Field.getInstance().getEditorText());
+                outputData = SaveParser.getInstance().parse(FieldWrapper.getInstance().getEditorText());
                 
                 // Test
                 System.out.println("Debug msg 1");
