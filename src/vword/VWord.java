@@ -7,7 +7,6 @@ import gui.Save;
 
 public class VWord {
 
-    
     public static void main(String[] args) {
         
         // Add everything here

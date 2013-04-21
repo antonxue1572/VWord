@@ -22,7 +22,7 @@ public class Load extends JButton {
     private static final Load instance = new Load();
     
     // Properties
-    private final int LOAD_X = 100;
+    private final int LOAD_X = 246;
     private final int LOAD_Y = 10;
     
     // Constructor
@@ -89,6 +89,7 @@ public class Load extends JButton {
 
             BufferedReader reader;
             
+            // Constructor
             public ConfirmActionListener() {
                 
             }
@@ -96,6 +97,7 @@ public class Load extends JButton {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+                    // Create reader, read file, and export to editor
                     reader = new BufferedReader(new FileReader(new File(name.getText() + ".txt")));
                     StringBuffer fileTextBuffer = new StringBuffer();
                     String fileText;
@@ -105,6 +107,7 @@ public class Load extends JButton {
                         }
                         FieldWrapper.getInstance().setEditorText(fileTextBuffer.toString());
                     } catch (IOException ex) {
+                        // Pop-up box for IOException
                         // Frame
                         JFrame pop = new JFrame("Exception!");
                         pop.setSize(100, 100);
@@ -121,6 +124,7 @@ public class Load extends JButton {
                         pop.setVisible(true);
                     }
                 } catch (FileNotFoundException ex) {
+                    // Pop-up box for FileNotFoundException
                     // Frame
                     JFrame pop = new JFrame("Exception!");
                     pop.setSize(100, 100);
