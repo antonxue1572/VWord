@@ -20,13 +20,13 @@ public class Save extends JButton {
     private static final Save instance = new Save();
         
     // Properties
-    private final int SAVE_X = 320;
-    private final int SAVE_Y = 10;
+    private final int INIT_X = 320;
+    private final int INIT_Y = 10;
     
     // Constructor
     private Save() {
         super("Save");
-        this.setBounds(Frame.getInstance().getInsets().left + SAVE_X, Frame.getInstance().getInsets().top + SAVE_Y, this.getPreferredSize().width, this.getPreferredSize().height);
+        this.setBounds(Frame.getInstance().getInsets().left + INIT_X, Frame.getInstance().getInsets().top + INIT_Y, this.getPreferredSize().width, this.getPreferredSize().height);
         this.addActionListener(new SaveActionListener());
     }
     

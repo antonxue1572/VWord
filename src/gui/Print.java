@@ -20,13 +20,13 @@ public class Print extends JButton {
     
     // Properties
     private final String NAME = "Print";
-    private final int PRINT_X = 394;
-    private final int PRINT_Y = 10;
+    private final int INIT_X = 394;
+    private final int INIT_Y = 10;
     
     // Constructor
     private Print() {
         super("Print");
-        this.setBounds(Frame.getInstance().getInsets().left + PRINT_X, Frame.getInstance().getInsets().top + PRINT_Y, this.getPreferredSize().width, this.getPreferredSize().height);
+        this.setBounds(Frame.getInstance().getInsets().left + INIT_X, Frame.getInstance().getInsets().top + INIT_Y, this.getPreferredSize().width, this.getPreferredSize().height);
         this.addActionListener(new PrintActionListener());
     }
     

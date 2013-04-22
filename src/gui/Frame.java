@@ -69,4 +69,11 @@ public class Frame {
         return insets;
     }
     
+    public Container getPane() {
+        return pane;
+    }
+    
+    public JFrame getFrame() {
+        return frame;
+    }
 }

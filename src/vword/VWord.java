@@ -4,6 +4,7 @@ import gui.Frame;
 import gui.Load;
 import gui.Print;
 import gui.Save;
+import util.Adjuster;
 
 public class VWord {
 
@@ -17,5 +18,8 @@ public class VWord {
         
         // Make visible
         Frame.getInstance().finalizeGUI();
+        
+        // Update
+        new Thread(Adjuster.getInstance()).start();
     }
 }
