@@ -9,7 +9,6 @@ public class SaveParser extends Parser {
     
     // Constrctor
     private SaveParser() {
-        
     }
     
     // Static factory
