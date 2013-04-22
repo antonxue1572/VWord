@@ -94,13 +94,6 @@ public class Save extends JButton {
                 PrintWriter pw;
                 outputData = SaveParser.getInstance().parse(FieldWrapper.getInstance().getEditorText());
                 
-                // Test
-                System.out.println("Debug msg 1");
-                for(int i = 0; i < outputData.size(); ++i) {
-                    System.out.println(outputData.get(i));
-                }
-                // End test
-                
                 try {
                     pw = new PrintWriter(new FileWriter(new File(name.getText() + ".txt")));
                     System.out.println("Ouput data: " + outputData.size());

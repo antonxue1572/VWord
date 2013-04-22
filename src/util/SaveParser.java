@@ -22,14 +22,16 @@ public class SaveParser extends Parser {
     
         StringBuffer sb = new StringBuffer(src);
         
-        if(sb.indexOf("/n") != -1) {
-            while(sb.indexOf("/n") != -1) {
-                output.add(sb.substring(0, sb.indexOf("/n") - 2));
-                sb.delete(0, sb.indexOf("/n") + 2);
+        if(sb.indexOf("\n") != -1) {
+            while(sb.indexOf("\n") != -1) {
+                output.add(sb.substring(0, sb.indexOf("\n")));
+                sb.delete(0, sb.indexOf("\n") + 1);
             }
         } else {
             output.add(sb.toString());
         }
+        // Add remaining bits
+        output.add(sb.substring(0));    
         
         // Make "dummy" and clear original one
         ArrayList <String> temp = new ArrayList <String> ();
