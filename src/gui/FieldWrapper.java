@@ -38,10 +38,12 @@ public class FieldWrapper extends JScrollPane {
         this.repaint();
     }
     
+    // Get maximum width
     public int getMaxWidth() {
         return MAX_WIDTH;
     }
     
+    // Get maximum height
     public int getMaxHeight() {
         return MAX_HEIGHT;
     }

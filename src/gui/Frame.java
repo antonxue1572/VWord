@@ -69,11 +69,8 @@ public class Frame {
         return insets;
     }
     
+    // Get content pane for external usage
     public Container getPane() {
         return pane;
-    }
-    
-    public JFrame getFrame() {
-        return frame;
     }
 }

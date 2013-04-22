@@ -22,13 +22,13 @@ public class Load extends JButton {
     private static final Load instance = new Load();
     
     // Properties
-    private final int LOAD_X = 246;
-    private final int LOAD_Y = 10;
+    private final int INIT_X = 246;
+    private final int INIT_Y = 10;
     
     // Constructor
     private Load() {
         super("Load");
-        this.setBounds(Frame.getInstance().getInsets().left + LOAD_X, Frame.getInstance().getInsets().top + LOAD_Y, this.getPreferredSize().width, this.getPreferredSize().height);
+        this.setBounds(Frame.getInstance().getInsets().left + INIT_X, Frame.getInstance().getInsets().top + INIT_Y, this.getPreferredSize().width, this.getPreferredSize().height);
         this.addActionListener(new LoadActionListener());
     }
     
