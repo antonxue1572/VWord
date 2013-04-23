@@ -24,7 +24,7 @@ public class Adjuster implements Runnable {
     public void run() {
         while(true) {
             // Maximum width for editor
-            if(Frame.getInstance().getPane().getWidth() > 1020) {
+            if(Frame.getInstance().getPane().getWidth() > 1040) {
                 FieldWrapper.getInstance().setBounds((Frame.getInstance().getPane().getWidth() - FieldWrapper.getInstance().getMaxWidth()) / 2, FieldWrapper.getInstance().getY(), FieldWrapper.getInstance().getMaxWidth(), Frame.getInstance().getPane().getHeight() - 70);
             } else {
                 FieldWrapper.getInstance().setBounds(FieldWrapper.getInstance().getX(), FieldWrapper.getInstance().getY(), Frame.getInstance().getPane().getWidth() - 40, Frame.getInstance().getPane().getHeight() - 70);
