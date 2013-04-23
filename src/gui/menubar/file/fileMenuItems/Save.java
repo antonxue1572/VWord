@@ -96,7 +96,6 @@ public class Save extends JMenuItem {
                 outputData = SaveParser.getInstance().parse(FieldWrapper.getInstance().getEditorText());
                 try {
                     pw = new PrintWriter(new FileWriter(new File(name.getText() + ".txt")));
-                    System.out.println("Ouput data: " + outputData.size());
                     for(int i = 0; i < outputData.size(); ++i) {
                         pw.println(outputData.get(i));
                     }

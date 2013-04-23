@@ -26,12 +26,10 @@ public class SaveParser extends Parser {
                 output.add(sb.substring(0, sb.indexOf("\n")));
                 sb.delete(0, sb.indexOf("\n") + 1);
             }
+            output.add(sb.substring(0));
         } else {
             output.add(sb.toString());
         }
-        // Add remaining bits
-        //System.out.println(sb.toString());
-        output.add(sb.substring(0));    
         
         // Make "dummy" and clear original one
         ArrayList <String> temp = new ArrayList <String> ();
