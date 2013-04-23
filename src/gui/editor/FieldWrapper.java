@@ -1,5 +1,8 @@
-package gui;
+package gui.editor;
 
+import gui.editor.Field;
+import gui.frame.Frame;
+import java.awt.Font;
 import javax.swing.JScrollPane;
 
 public class FieldWrapper extends JScrollPane {

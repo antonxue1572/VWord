@@ -1,10 +1,8 @@
 package util;
 
-import gui.FieldWrapper;
-import gui.Frame;
-import gui.Load;
-import gui.Print;
-import gui.Save;
+import gui.editor.FieldWrapper;
+import gui.frame.Frame;
+import gui.menubar.MainMenuBar;
 
 public class Adjuster implements Runnable {
     
@@ -32,10 +30,13 @@ public class Adjuster implements Runnable {
                 FieldWrapper.getInstance().setBounds(FieldWrapper.getInstance().getX(), FieldWrapper.getInstance().getY(), Frame.getInstance().getPane().getWidth() - 40, Frame.getInstance().getPane().getHeight() - 70);
             }
             
-            // Toolbar
+            // Toolbar TODO: Remove these eventually
+            /*
             Print.getInstance().setBounds(Frame.getInstance().getPane().getWidth() - 78, Print.getInstance().getY(), Print.getInstance().getPreferredSize().width, Print.getInstance().getPreferredSize().height);
             Save.getInstance().setBounds(Frame.getInstance().getPane().getWidth() - 78 - Print.getInstance().getWidth() - 20, Save.getInstance().getY(), Save.getInstance().getPreferredSize().width, Save.getInstance().getPreferredSize().height);
             Load.getInstance().setBounds(Frame.getInstance().getPane().getWidth() - 78 - Print.getInstance().getWidth() - 20 - Save.getInstance().getWidth() - 20, Load.getInstance().getY(), Load.getInstance().getWidth(), Load.getInstance().getHeight());
+            */
+            MainMenuBar.getInstance().setBounds(Frame.getInstance().getInsets().left, Frame.getInstance().getInsets().top, Frame.getInstance().getPane().getWidth(), MainMenuBar.getInstance().getPreferredSize().height);
             
             // Finalize
             Frame.getInstance().getPane().repaint();

@@ -30,6 +30,7 @@ public class SaveParser extends Parser {
             output.add(sb.toString());
         }
         // Add remaining bits
+        //System.out.println(sb.toString());
         output.add(sb.substring(0));    
         
         // Make "dummy" and clear original one

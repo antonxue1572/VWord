@@ -1,34 +1,34 @@
-package gui;
+package gui.menubar.file.fileMenuItems;
 
+import gui.editor.FieldWrapper;
+import gui.frame.Frame;
 import java.awt.Container;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 
-public class Load extends JButton {
+public class Load extends JMenuItem {
     
     // Singleton
     private static final Load instance = new Load();
     
-    // Properties
-    private final int INIT_X = 246;
-    private final int INIT_Y = 10;
-    
     // Constructor
     private Load() {
         super("Load");
-        this.setBounds(Frame.getInstance().getInsets().left + INIT_X, Frame.getInstance().getInsets().top + INIT_Y, this.getPreferredSize().width, this.getPreferredSize().height);
+        this.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+        this.getAccessibleContext().setAccessibleDescription("Loads a file");
         this.addActionListener(new LoadActionListener());
     }
     

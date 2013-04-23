@@ -1,5 +1,6 @@
-package gui;
+package gui.editor;
 
+import java.awt.Font;
 import javax.swing.JTextArea;
 
 public class Field extends JTextArea {

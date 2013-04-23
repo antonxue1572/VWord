@@ -1,32 +1,30 @@
-package gui;
+package gui.menubar.file.fileMenuItems;
 
-import java.awt.Component;
+import gui.editor.FieldWrapper;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.ArrayList;
-import javax.swing.JButton;
+import javax.swing.JMenuItem;
+import javax.swing.KeyStroke;
 import util.PrintParser;
 
-public class Print extends JButton {
+public class Print extends JMenuItem {
     
     // Singleton
     private static final Print instance = new Print();
     
-    // Properties
-    private final String NAME = "Print";
-    private final int INIT_X = 394;
-    private final int INIT_Y = 10;
-    
     // Constructor
     private Print() {
         super("Print");
-        this.setBounds(Frame.getInstance().getInsets().left + INIT_X, Frame.getInstance().getInsets().top + INIT_Y, this.getPreferredSize().width, this.getPreferredSize().height);
+        this.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, ActionEvent.CTRL_MASK));
+        this.getAccessibleContext().setAccessibleDescription("Prints the file");
         this.addActionListener(new PrintActionListener());
     }
     

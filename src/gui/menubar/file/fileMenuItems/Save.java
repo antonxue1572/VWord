@@ -1,9 +1,11 @@
-package gui;
+package gui.menubar.file.fileMenuItems;
 
+import gui.editor.FieldWrapper;
 import java.awt.Container;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,22 +13,21 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JTextField;
+import javax.swing.KeyStroke;
 import util.SaveParser;
 
-public class Save extends JButton {
+public class Save extends JMenuItem {
     
     // Singleton
-    private static final Save instance = new Save();
-        
-    // Properties
-    private final int INIT_X = 320;
-    private final int INIT_Y = 10;
+    private static final Save instance = new Save("Save");
     
     // Constructor
-    private Save() {
-        super("Save");
-        this.setBounds(Frame.getInstance().getInsets().left + INIT_X, Frame.getInstance().getInsets().top + INIT_Y, this.getPreferredSize().width, this.getPreferredSize().height);
+    private Save(String newName) {
+        super(newName);
+        this.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+        this.getAccessibleContext().setAccessibleDescription("Saves the file");
         this.addActionListener(new SaveActionListener());
     }
     
@@ -93,7 +94,6 @@ public class Save extends JButton {
             public void actionPerformed(ActionEvent e) {
                 PrintWriter pw;
                 outputData = SaveParser.getInstance().parse(FieldWrapper.getInstance().getEditorText());
-                
                 try {
                     pw = new PrintWriter(new FileWriter(new File(name.getText() + ".txt")));
                     System.out.println("Ouput data: " + outputData.size());
